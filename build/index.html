@@ -1,21 +1,75 @@
 <DOCTYPE html>
-	<html lang="en">
+  <html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="description" content="" />
+      <meta name="viewport" content="width=device-width,initial-scale=1" />
+      <link rel="stylesheet" href="css/style.css" />
+      <title>Converter</title>
+    </head>
 
-	<head>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="description" content="" />
-		<meta name="viewport" content="width=device-width,initial-scale=1" />
-		<link rel="stylesheet" href="css/style.css">
-		<title>Converter</title>
-	</head>
+    <body>
+      <div class="app-wrapper">
+        <h1 class="app-title">Currency converter</h1>
+        <div class="app-content">
+          <ul class="tab-label">
+            <li>sell</li>
+            <li>buy</li>
+          </ul>
+          <div class="tabs-content">
+            <div class="tabs-content-buy">
+              <div class="currency-line">
+                <label>
+                  <select name=""></select>
+                </label>
+                <button>&#8660;</button>
+                <label>
+                  <select name=""></select>
+                </label>
+              </div>
+              <div class="counter-line">
+                <label>
+                  <input type="text" />
+                </label>
+                <span>or</span>
+                <label>
+                  <input type="text" />
+                </label>
+              </div>
+              <div class="bottom-btns-wrap">
+                <select name=""></select>
+                <select name=""></select>
+              </div>
+            </div>
+            <div style="display: none" class="tabs-content-sell">
+              <div class="currency-line">
+                <label>
+                  <select name=""></select>
+                </label>
+                <button>&#8660;</button>
+                <label>
+                  <select name=""></select>
+                </label>
+              </div>
+              <div class="counter-line">
+                <label>
+                  <input type="text" />
+                </label>
+                <span>or</span>
+                <label>
+                  <input type="text" />
+                </label>
+              </div>
+              <div class="bottom-btns-wrap">
+                <select name=""></select>
+                <select name=""></select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-	<body>
-		
-
-		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular.min.js"></script>
-		<script src="js/services.js"></script>
-		<script src="js/controllers.js"></script>
-		<script src="js/index.js"></script>
-	</body>
-
-	</html>
+      <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular.min.js"></script>
+      <script src="js/index.js"></script>
+    </body>
+  </html>

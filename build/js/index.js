@@ -1,1 +1,1 @@
-"use strict";
+"use strict";console.log("First"),console.log("second"),console.log("last");

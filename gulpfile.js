@@ -7,6 +7,7 @@ const minifycss = require('gulp-minify-css');
 const babel = require('gulp-babel');
 const imagemin = require('gulp-imagemin');
 const browserSync = require('browser-sync').create();
+const concat = require('gulp-concat');
 
 const path = {
   build: {
@@ -21,12 +22,6 @@ const path = {
     style: 'src/scss/style.scss',
     img: 'src/img/**/*.{jpg,jpeg,png}'
 
-  },
-  watch: {
-    html: 'src/**/*.html',
-    js: 'src/js/**/*.js',
-    style: 'src/scss/**/*.{scss,css}',
-    img: 'src/img/**/*.*'
   }
 };
 
@@ -36,7 +31,8 @@ gulp.task('html', function() {
 });
 
 gulp.task('script', function() {
-  gulp.src(path.src.js)
+  return gulp.src(['src/js/app/services.js', 'src/js/app/controllers.js', 'src/js/index.js'])
+    .pipe(concat('index.js'))
     .pipe(plumber())
     .pipe(babel({
       presets: ['env']
