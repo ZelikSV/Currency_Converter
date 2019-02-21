@@ -8,32 +8,28 @@
       <title>Converter</title>
     </head>
 
-    <body>
-      <div class="app-wrapper">
+    <body ng-app="myApp">
+      <div class="app-wrapper" ng-controller="myController">
         <h1 class="app-title">Currency converter</h1>
         <div class="app-content">
           <ul class="tab-label">
-            <li class="active">sell</li>
-            <li>buy</li>
+            <li class="active" ng-click="activeTab=!activeTab">sell</li>
+            <li ng-click="activeTab=!activeTab">buy</li>
           </ul>
           <div class="tabs-content">
-            <div  class="tabs-content-buy" style="display: none">
+            <div  ng-show="activeTab === false" class="tabs-content-buy">
               <div class="currency-line">
                 <label>
                   <p>We give</p>
                   <select name="currency-sell">
-                    <option value="US">US</option>
-                    <option value="UA">UA</option>
-                    <option value="RU">RU</option>
+                      <option ng-repeat="item in model">{{item}}</option>
                   </select>
                 </label>
                 <button>&#8660;</button>
                 <label>
                     <p>We take</p>
                   <select name="currency-buy">
-                    <option value="US">US</option>
-                    <option value="US">UA</option>
-                    <option value="US">RU</option>
+                      <option ng-repeat="item in model">{{item}}</option>
                   </select>
                 </label>
               </div>
@@ -45,7 +41,7 @@
                 <span>or</span>
                 <label>
                     <p>How much we want buy</p>
-                  <input type="text" disabled/>
+                  <input type="text"/>
                 </label>
               </div>
               <div class="bottom-btns-wrap">
@@ -63,23 +59,19 @@
                 </select>
               </div>
             </div>
-            <div class="tabs-content-sell" >
+            <div ng-hide="activeTab === false" class="tabs-content-sell" >
                 <div class="currency-line">
                   <label>
                     <p>We give</p>
                     <select name="currency-sell">
-                      <option value="US">US</option>
-                      <option value="UA">UA</option>
-                      <option value="RU">RU</option>
+                        <option ng-repeat="item in model">{{item}}</option>
                     </select>
                   </label>
                   <button>&#8660;</button>
                   <label>
-                      <p>We take</p>
+                    <p>We take</p>
                     <select name="currency-buy">
-                      <option value="US">US</option>
-                      <option value="US">UA</option>
-                      <option value="US">RU</option>
+                        <option ng-repeat="item in model">{{item}}</option>
                     </select>
                   </label>
                 </div>
@@ -90,8 +82,8 @@
                   </label>
                   <span>or</span>
                   <label>
-                      <p>How much we want buy</p>
-                    <input type="text" disabled/>
+                    <p>How much we want buy</p>
+                    <input type="text"/>
                   </label>
                 </div>
                 <div class="bottom-btns-wrap">
@@ -106,14 +98,14 @@
                       <option value="Kiev">Kiev</option>
                       <option value="Kharkiv">Kharkiv</option>
                       <option value="Lviv">Lviv</option>
-                  </select>
+                    </select>
+                  </div>
                 </div>
               </div>
+            </div>
           </div>
-        </div>
-      </div>
-
-      <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular.min.js"></script>
-      <script src="js/index.js"></script>
+          
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.7/angular.min.js"></script>
+          <script src="js/index.js"></script>
     </body>
-  </html>
+    </html>

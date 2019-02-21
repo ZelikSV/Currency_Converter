@@ -34,10 +34,6 @@ gulp.task('script', function() {
   return gulp.src(['src/js/app/services.js', 'src/js/app/controllers.js', 'src/js/index.js'])
     .pipe(concat('index.js'))
     .pipe(plumber())
-    .pipe(babel({
-      presets: ['env']
-    }))
-    .pipe(uglify())
     .pipe(gulp.dest(path.build.js));
 });
 
