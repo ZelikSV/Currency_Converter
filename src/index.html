@@ -13,58 +13,102 @@
         <h1 class="app-title">Currency converter</h1>
         <div class="app-content">
           <ul class="tab-label">
-            <li>sell</li>
+            <li class="active">sell</li>
             <li>buy</li>
           </ul>
           <div class="tabs-content">
-            <div class="tabs-content-buy">
+            <div  class="tabs-content-buy" style="display: none">
               <div class="currency-line">
                 <label>
-                  <select name=""></select>
+                  <p>We give</p>
+                  <select name="currency-sell">
+                    <option value="US">US</option>
+                    <option value="UA">UA</option>
+                    <option value="RU">RU</option>
+                  </select>
                 </label>
                 <button>&#8660;</button>
                 <label>
-                  <select name=""></select>
+                    <p>We take</p>
+                  <select name="currency-buy">
+                    <option value="US">US</option>
+                    <option value="US">UA</option>
+                    <option value="US">RU</option>
+                  </select>
                 </label>
               </div>
               <div class="counter-line">
                 <label>
-                  <input type="text" />
+                  <p>How much we want sell</p>
+                  <input type="text"/>
                 </label>
                 <span>or</span>
                 <label>
-                  <input type="text" />
+                    <p>How much we want buy</p>
+                  <input type="text" disabled/>
                 </label>
               </div>
               <div class="bottom-btns-wrap">
-                <select name=""></select>
-                <select name=""></select>
+                <select name="commission">
+                  <option value="1">Commission 1%</option>
+                  <option value="2">Commission 2%</option>
+                  <option value="3">Commission 3%</option>
+                  <option value="4">Commission 4%</option>
+                </select>
+                <select name="city">
+                    <option value="Dnipro">Dnipro</option>
+                    <option value="Kiev">Kiev</option>
+                    <option value="Kharkiv">Kharkiv</option>
+                    <option value="Lviv">Lviv</option>
+                </select>
               </div>
             </div>
-            <div style="display: none" class="tabs-content-sell">
-              <div class="currency-line">
-                <label>
-                  <select name=""></select>
-                </label>
-                <button>&#8660;</button>
-                <label>
-                  <select name=""></select>
-                </label>
+            <div class="tabs-content-sell" >
+                <div class="currency-line">
+                  <label>
+                    <p>We give</p>
+                    <select name="currency-sell">
+                      <option value="US">US</option>
+                      <option value="UA">UA</option>
+                      <option value="RU">RU</option>
+                    </select>
+                  </label>
+                  <button>&#8660;</button>
+                  <label>
+                      <p>We take</p>
+                    <select name="currency-buy">
+                      <option value="US">US</option>
+                      <option value="US">UA</option>
+                      <option value="US">RU</option>
+                    </select>
+                  </label>
+                </div>
+                <div class="counter-line">
+                  <label>
+                    <p>How much we want sell</p>
+                    <input type="text"/>
+                  </label>
+                  <span>or</span>
+                  <label>
+                      <p>How much we want buy</p>
+                    <input type="text" disabled/>
+                  </label>
+                </div>
+                <div class="bottom-btns-wrap">
+                  <select name="commission">
+                    <option value="1">Commission 1%</option>
+                    <option value="2">Commission 2%</option>
+                    <option value="3">Commission 3%</option>
+                    <option value="4">Commission 4%</option>
+                  </select>
+                  <select name="city">
+                      <option value="Dnipro">Dnipro</option>
+                      <option value="Kiev">Kiev</option>
+                      <option value="Kharkiv">Kharkiv</option>
+                      <option value="Lviv">Lviv</option>
+                  </select>
+                </div>
               </div>
-              <div class="counter-line">
-                <label>
-                  <input type="text" />
-                </label>
-                <span>or</span>
-                <label>
-                  <input type="text" />
-                </label>
-              </div>
-              <div class="bottom-btns-wrap">
-                <select name=""></select>
-                <select name=""></select>
-              </div>
-            </div>
           </div>
         </div>
       </div>
