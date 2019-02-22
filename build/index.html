@@ -7,105 +7,143 @@
       <link rel="stylesheet" href="css/style.css" />
       <title>Converter</title>
     </head>
-
     <body ng-app="myApp">
       <div class="app-wrapper" ng-controller="myController">
         <h1 class="app-title">Currency converter</h1>
         <div class="app-content">
           <ul class="tab-label">
-            <li class="active" ng-click="activeTab=!activeTab">sell</li>
-            <li ng-click="activeTab=!activeTab">buy</li>
+            <li
+              class="active"
+              ng-class="{'active':activeTab}"
+              ng-click="activeTab=true; changeValues()"
+            >
+              sell
+            </li>
+            <li
+              ng-click="activeTab=false; changeValues()"
+              ng-class="{'active':!activeTab}"
+            >
+              buy
+            </li>
           </ul>
           <div class="tabs-content">
-            <div  ng-show="activeTab === false" class="tabs-content-buy">
+            <div ng-show="activeTab === true" class="tabs-content-sell">
               <div class="currency-line">
                 <label>
                   <p>We give</p>
-                  <select name="currency-sell">
-                      <option ng-repeat="item in model">{{item}}</option>
+                  <select
+                    name="currency-sell"
+                    ng-model="currencyFrom"
+                    ng-click="convertValue()"
+                  >
+                    <option ng-repeat="item in currency">{{ item.ccy }}</option>
                   </select>
                 </label>
-                <button>&#8660;</button>
+                <button ng-click="changeValues($event)">&#8660;</button>
                 <label>
-                    <p>We take</p>
-                  <select name="currency-buy">
-                      <option ng-repeat="item in model">{{item}}</option>
+                  <p>We take</p>
+                  <select
+                    name="currency-buy"
+                    ng-model="currencyTo"
+                    ng-click="convertValue()"
+                  >
+                    <option ng-repeat="item in currency">{{ item.ccy }}</option>
                   </select>
                 </label>
               </div>
               <div class="counter-line">
                 <label>
                   <p>How much we want sell</p>
-                  <input type="text"/>
+                  <input
+                    type="number"
+                    min="0"
+                    ng-model="countVal"
+                    ng-change="convertValue($event)"
+                  />
                 </label>
                 <span>or</span>
                 <label>
-                    <p>How much we want buy</p>
-                  <input type="text"/>
+                  <p>How much we want buy</p>
+                  <input type="number" min="0" ng-model="costVal" />
                 </label>
               </div>
               <div class="bottom-btns-wrap">
-                <select name="commission">
+                <select name="commission" ng-click="addCommissions($event)">
+                  <option value="0">Commission 0%</option>
                   <option value="1">Commission 1%</option>
                   <option value="2">Commission 2%</option>
                   <option value="3">Commission 3%</option>
                   <option value="4">Commission 4%</option>
                 </select>
                 <select name="city">
-                    <option value="Dnipro">Dnipro</option>
-                    <option value="Kiev">Kiev</option>
-                    <option value="Kharkiv">Kharkiv</option>
-                    <option value="Lviv">Lviv</option>
+                  <option value="Dnipro">Dnipro</option>
+                  <option value="Kiev">Kiev</option>
+                  <option value="Kharkiv">Kharkiv</option>
+                  <option value="Lviv">Lviv</option>
                 </select>
               </div>
             </div>
-            <div ng-hide="activeTab === false" class="tabs-content-sell" >
-                <div class="currency-line">
-                  <label>
-                    <p>We give</p>
-                    <select name="currency-sell">
-                        <option ng-repeat="item in model">{{item}}</option>
-                    </select>
-                  </label>
-                  <button>&#8660;</button>
-                  <label>
-                    <p>We take</p>
-                    <select name="currency-buy">
-                        <option ng-repeat="item in model">{{item}}</option>
-                    </select>
-                  </label>
-                </div>
-                <div class="counter-line">
-                  <label>
-                    <p>How much we want sell</p>
-                    <input type="text"/>
-                  </label>
-                  <span>or</span>
-                  <label>
-                    <p>How much we want buy</p>
-                    <input type="text"/>
-                  </label>
-                </div>
-                <div class="bottom-btns-wrap">
-                  <select name="commission">
-                    <option value="1">Commission 1%</option>
-                    <option value="2">Commission 2%</option>
-                    <option value="3">Commission 3%</option>
-                    <option value="4">Commission 4%</option>
+            <div ng-show="activeTab === false" class="tabs-content-buy">
+              <div class="currency-line">
+                <label>
+                  <p>We give</p>
+                  <select
+                    name="currency-sell"
+                    ng-model="currencyFrom"
+                    ng-click="convertValue()"
+                  >
+                    <option ng-repeat="item in currency">{{ item.ccy }}</option>
                   </select>
-                  <select name="city">
-                      <option value="Dnipro">Dnipro</option>
-                      <option value="Kiev">Kiev</option>
-                      <option value="Kharkiv">Kharkiv</option>
-                      <option value="Lviv">Lviv</option>
-                    </select>
-                  </div>
-                </div>
+                </label>
+                <button ng-click="changeValues($event)">&#8660;</button>
+                <label>
+                  <p>We take</p>
+                  <select
+                    name="currency-buy"
+                    ng-model="currencyTo"
+                    ng-click="convertValue()"
+                  >
+                    <option ng-repeat="item in currency">{{ item.ccy }}</option>
+                  </select>
+                </label>
+              </div>
+              <div class="counter-line">
+                <label>
+                  <p>How much we want sell</p>
+                  <input
+                    type="number"
+                    min="0"
+                    ng-model="countVal"
+                    ng-change="convertValue($event)"
+                  />
+                </label>
+                <span>or</span>
+                <label>
+                  <p>How much we want buy</p>
+                  <input type="number" min="0" ng-model="costVal" />
+                </label>
+              </div>
+              <div class="bottom-btns-wrap">
+                <select name="commission" ng-click="addCommissions($event)">
+                  <option value="0">Commission 0%</option>
+                  <option value="1">Commission 1%</option>
+                  <option value="2">Commission 2%</option>
+                  <option value="3">Commission 3%</option>
+                  <option value="4">Commission 4%</option>
+                </select>
+                <select name="city">
+                  <option value="Dnipro">Dnipro</option>
+                  <option value="Kiev">Kiev</option>
+                  <option value="Kharkiv">Kharkiv</option>
+                  <option value="Lviv">Lviv</option>
+                </select>
               </div>
             </div>
           </div>
-          
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.7/angular.min.js"></script>
-          <script src="js/index.js"></script>
+        </div>
+      </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.7/angular.min.js"></script>
+      <script src="js/index.js"></script>
     </body>
-    </html>
+  </html>
+</DOCTYPE>
