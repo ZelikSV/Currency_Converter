@@ -32,8 +32,6 @@ h1{
         background: rgba(0, 93, 233, 0.5);
         line-height: 35px;
         width: 50%;
-        border: 1px solid #000;
-        border-bottom: none;
         border-radius: 5px 5px 0 0;
         text-transform: capitalize;
         transition: .3s linear;
@@ -42,7 +40,7 @@ h1{
             cursor: pointer;
         }
         &.active{
-            background: rgba(0, 93, 233, 0.8);
+            background: #063b8c;
         }
     }
 }
