@@ -16,12 +16,12 @@
             <li
               class="active"
               ng-class="{'active':mc.activeTab}"
-              ng-click="mc.activeTab=true; mc.changeValues()"
+              ng-click="mc.activeTab=true"
             >
               sell
             </li>
             <li
-              ng-click="mc.activeTab=false; mc.changeValues()"
+              ng-click="mc.activeTab=false"
               ng-class="{'active':!mc.activeTab}"
             >
               buy
@@ -65,7 +65,7 @@
                 <span>or</span>
                 <label>
                   <p>How much we want buy</p>
-                  <input type="number" readonly value="mc.costVal" ng-model="mc.costVal" />
+                  <input type="number" readonly ng-model="mc.costVal" />
                 </label>
               </div>
               <div class="bottom-btns-wrap">
