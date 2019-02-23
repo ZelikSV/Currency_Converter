@@ -12,7 +12,7 @@ myApp.service('getCurrency', ['$http', function($http) {
 myApp.service('currencyService', function() {
   this.convertToUa = (from, to) => {
     let result = 0;
-    result = from * to;
+    result = Math.round(from * to);
 
     return result;
   };
@@ -20,6 +20,7 @@ myApp.service('currencyService', function() {
   this.convertFromUa = (from, to) => {
     let res = 0;
     res = from / to;
+    res = Number(res.toFixed(2));
     return res;
   };
 
