@@ -70,13 +70,10 @@
               </div>
               <div class="bottom-btns-wrap">
                 <select name="commission" ng-click="mc.addCommissions($event)">
-                  <option ng-repeat='item in mc.percentageTax' value='item'>Commission {{item}}%</option>
+                  <option ng-repeat='item in mc.percentageTax' value={{item}}>Commission {{item}}%</option>
                 </select>
                 <select name="city">
-                  <option value="Dnipro">Dnipro</option>
-                  <option value="Kiev">Kiev</option>
-                  <option value="Kharkiv">Kharkiv</option>
-                  <option value="Lviv">Lviv</option>
+                  <option ng-repeat='item in mc.citiesLocation' value={{item}}>{{item}}</option>
                 </select>
               </div>
             </div>
@@ -122,13 +119,10 @@
               </div>
               <div class="bottom-btns-wrap">
                 <select name="commission" ng-click="mc.addCommissions($event)">
-                  <option ng-repeat='item in mc.percentageTax' value='item'>Commission {{item}}%</option>
+                  <option ng-repeat='item in mc.percentageTax' value={{item}}>Commission {{item}}%</option>
                 </select>
                 <select name="city">
-                  <option value="Dnipro">Dnipro</option>
-                  <option value="Kiev">Kiev</option>
-                  <option value="Kharkiv">Kharkiv</option>
-                  <option value="Lviv">Lviv</option>
+                  <option ng-repeat='item in mc.citiesLocation' value={{item}} >{{item}}</option>
                 </select>
               </div>
             </div>
