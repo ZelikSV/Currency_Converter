@@ -18,7 +18,7 @@ h1{
 
 .tabs-content-buy,
 .tabs-content-sell{
-    padding: 20px 0;
+    padding: 20px 40px;
     background: rgba(255, 255, 255, .5);
     border-radius: 0  0 5px 5px;
 }
@@ -46,7 +46,7 @@ h1{
 .currency-line,
 .counter-line{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: flex-end;
    margin-bottom: 25px;
 }
@@ -77,14 +77,9 @@ h1{
     }
     }
 }
-.counter-line{
-    font-size: 20px;
-    span{
-        color: #000;
-        line-height: 30px;
-    }
-}
+
 label{
+    width: 35%;
     input{
         border-radius: 5px;
         line-height: 25px;
@@ -98,7 +93,7 @@ label{
 }
 
 select{
-    width: 43%;
+    width: 35%;
     padding: 6px 0;
     text-indent: 10px;
     border-radius: 5px;
@@ -108,4 +103,9 @@ select{
         text-indent: 10px;
 
     }
+}
+.bottom-btns-wrap{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
