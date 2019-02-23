@@ -36,7 +36,7 @@ gulp.task('index', function() {
 });
 
 gulp.task('script', function() {
-  return gulp.src(['src/js/app/services.js', 'src/js/app/controllers.js', 'src/js/index.js'])
+  return gulp.src(['src/js/index.js', 'src/js/app/services.js', 'src/js/app/controllers.js'])
     .pipe(concat('index.js'))
     .pipe(plumber())
     .pipe(gulp.dest(path.build.js));
