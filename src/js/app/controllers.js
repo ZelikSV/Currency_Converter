@@ -1,13 +1,13 @@
 /* global myApp */
 (function() {
-  myApp.controller('myController', ['getCurrency', 'currencyService', function(getCurrency, currencyService) {
+  myApp.controller('myController', ['getCurrency', 'currencyService', 'PERCENTAGE_TAX', function(getCurrency, currencyService, PERCENTAGE_TAX) {
     this.activeTab = true;
     this.countVal = null;
     this.costVal = null;
     this.currency = getCurrency.loadCache();
     this.currencyFrom = 'USD';
     this.currencyTo = 'EUR';
-
+    this.percentageTax = PERCENTAGE_TAX;
     this.changeValues = () => {
       [this.countVal, this.costVal] = [this.costVal, this.countVal];
       [this.currencyFrom, this.currencyTo] = [this.currencyTo, this.currencyFrom];
