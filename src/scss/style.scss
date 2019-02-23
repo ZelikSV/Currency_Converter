@@ -2,6 +2,7 @@
 
 body{
     background: url('../img/bg.png') no-repeat 50% 0% / cover;
+    font-family: 'Roboto', sans-serif;
     color: #fff;
 }
 .app-wrapper{
@@ -12,16 +13,18 @@ body{
 }
 h1{
     text-transform: capitalize;
-    font-size: 40px;
+    font-size: 50px;
     margin-bottom: 20px;
+    font-family: 'Abril Fatface', cursive;
+    font-weight: 800;
+    text-shadow: 1px 1px 3px #063b8c;
 }
-.app-content{
-    background: rgba(255, 255, 255, .5);
-    border-radius: 5px;
-}
+
 .tabs-content-buy,
 .tabs-content-sell{
-    padding: 20px 0;
+    padding: 20px 40px;
+    background: rgba(255, 255, 255, .5);
+    border-radius: 0  0 5px 5px;
 }
 .tab-label{
     width: 100%;
@@ -30,6 +33,9 @@ h1{
     align-items: center;
     li{
         background: rgba(0, 93, 233, 0.5);
+        font-size: 25px;
+        letter-spacing: 5px;
+        font-weight: 700;
         line-height: 35px;
         width: 50%;
         border-radius: 5px 5px 0 0;
@@ -47,7 +53,7 @@ h1{
 .currency-line,
 .counter-line{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: flex-end;
    margin-bottom: 25px;
 }
@@ -69,8 +75,11 @@ h1{
     label{
         width: 35%;
         p{
-            font-size: 20px;
-            margin-bottom: 5px;
+            text-transform: capitalize;
+            text-align: left;
+            color: #063b8c;
+            font-size: 17px;
+            margin-bottom: 10px;
         }
     select{
         width: 100%;
@@ -78,14 +87,14 @@ h1{
     }
     }
 }
-.counter-line{
-    font-size: 20px;
-    span{
-        color: #000;
-        line-height: 30px;
-    }
-}
+
 label{
+    width: 35%;
+    p{
+        color: #063b8c;
+        font-size: 17px;
+        margin-bottom: 10px;
+    }
     input{
         border-radius: 5px;
         line-height: 25px;
@@ -99,7 +108,7 @@ label{
 }
 
 select{
-    width: 43%;
+    width: 35%;
     padding: 6px 0;
     text-indent: 10px;
     border-radius: 5px;
@@ -109,4 +118,9 @@ select{
         text-indent: 10px;
 
     }
+}
+.bottom-btns-wrap{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

@@ -4,6 +4,7 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta name="description" content="" />
       <meta name="viewport" content="width=device-width,initial-scale=1" />
+      <link href="https://fonts.googleapis.com/css?family=Roboto:400,700 | Abril+Fatface rel="stylesheet">
       <!-- build:css -->
       <!-- endbuild -->
       <title>Converter</title>
@@ -16,12 +17,12 @@
             <li
               class="active"
               ng-class="{'active':mc.activeTab}"
-              ng-click="mc.activeTab=true; mc.changeValues()"
+              ng-click="mc.activeTab=true"
             >
               sell
             </li>
             <li
-              ng-click="mc.activeTab=false; mc.changeValues()"
+              ng-click="mc.activeTab=false"
               ng-class="{'active':!mc.activeTab}"
             >
               buy
@@ -31,7 +32,7 @@
             <div ng-show="mc.activeTab === true" class="tabs-content-sell">
               <div class="currency-line">
                 <label>
-                  <p>We give</p>
+                  <p>give back</p>
                   <select
                     name="currency-sell"
                     ng-model="mc.currencyFrom"
@@ -42,7 +43,7 @@
                 </label>
                 <button ng-click="mc.changeValues($event)">&#8660;</button>
                 <label>
-                  <p>We take</p>
+                  <p>we get</p>
                   <select
                     name="currency-buy"
                     ng-model="mc.currencyTo"
@@ -54,7 +55,7 @@
               </div>
               <div class="counter-line">
                 <label>
-                  <p>How much we want sell</p>
+                  <p>How much to exchange</p>
                   <input
                     type="number"
                     min="0"
@@ -62,10 +63,9 @@
                     ng-change="mc.convertValue($event)"
                   />
                 </label>
-                <span>or</span>
                 <label>
-                  <p>How much we want buy</p>
-                  <input type="number" readonly value="mc.costVal" ng-model="mc.costVal" />
+                  <p>How much will we get</p>
+                  <input type="number" readonly ng-model="mc.costVal" />
                 </label>
               </div>
               <div class="bottom-btns-wrap">
@@ -80,7 +80,7 @@
             <div ng-show="mc.activeTab === false" class="tabs-content-buy">
               <div class="currency-line">
                 <label>
-                  <p>We give</p>
+                  <p>give back</p>
                   <select
                     name="currency-sell"
                     ng-model="mc.currencyFrom"
@@ -91,7 +91,7 @@
                 </label>
                 <button ng-click="mc.changeValues($event)">&#8660;</button>
                 <label>
-                  <p>We take</p>
+                  <p>we get</p>
                   <select
                     name="currency-buy"
                     ng-model="mc.currencyTo"
@@ -103,7 +103,7 @@
               </div>
               <div class="counter-line">
                 <label>
-                  <p>How much we want sell</p>
+                  <p>How much to exchange</p>
                   <input
                     type="number"
                     min="0"
@@ -111,9 +111,9 @@
                     ng-change="mc.convertValue($event)"
                   />
                 </label>
-                <span>or</span>
                 <label>
-                  <p>How much we want buy</p>
+                  <p>How much will we get
+                  </p>
                   <input type="number" readonly ng-model="mc.costVal" />
                 </label>
               </div>

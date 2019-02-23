@@ -5,16 +5,14 @@
 }());
 /* global myApp, angular*/
 (function() {
-  myApp.service('getCurrency', ['$http', function($http) {
+  myApp.service('currencyService', ['$http', function($http) {
     this.list = [];
     this.loadCache = () => {
       $http.get('https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5')
         .then(({ data }) => angular.copy(data, this.list));
       return this.list;
     };
-  }]);
 
-  myApp.service('currencyService', function() {
     this.convertToUa = (from, to) => {
       let result = 0;
       result = Math.round(from * to);
@@ -34,22 +32,26 @@
       res = sum * pr / 100;
       return res;
     };
+  }]);
+
+  myApp.constant('mainConstants', {
+    'percentageTax': [0, 1, 2, 3, 4, 5],
+    'cities': ['Kiev', 'Dnieper', 'Kharkov', 'Lvov', 'Zaporozhye', 'Krivoy Rog']
   });
-  myApp.constant('PERCENTAGE_TAX', [0, 1, 2, 3, 4, 5]);
-  myApp.constant('CITIES', ['Kiev', 'Dnieper', 'Kharkov', 'Lvov', 'Zaporozhye', 'Krivoy Rog']);
 }());
 
 /* global myApp */
 (function() {
-  myApp.controller('myController', ['getCurrency', 'currencyService', 'PERCENTAGE_TAX', 'CITIES', function(getCurrency, currencyService, PERCENTAGE_TAX, CITIES) {
+  myApp.controller('myController', ['currencyService', 'mainConstants', function(currencyService, mainConstants) {
     this.activeTab = true;
     this.countVal = null;
     this.costVal = null;
-    this.currency = getCurrency.loadCache();
+    this.currency = currencyService.loadCache();
     this.currencyFrom = 'USD';
     this.currencyTo = 'EUR';
-    this.percentageTax = PERCENTAGE_TAX;
-    this.citiesLocation = CITIES;
+    this.percentageTax = mainConstants.percentageTax;
+    this.citiesLocation = mainConstants.cities;
+
     this.changeValues = () => {
       [this.countVal, this.costVal] = [this.costVal, this.countVal];
       [this.currencyFrom, this.currencyTo] = [this.currencyTo, this.currencyFrom];
@@ -69,7 +71,9 @@
         }
       });
     };
+
     this.addCommissions = e => {
+      this.convertValue();
       this.costVal -= currencyService.addCommission(this.costVal, e.target.value);
     };
   }]);

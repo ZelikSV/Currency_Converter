@@ -1,14 +1,15 @@
 /* global myApp */
 (function() {
-  myApp.controller('myController', ['getCurrency', 'currencyService', 'PERCENTAGE_TAX', 'CITIES', function(getCurrency, currencyService, PERCENTAGE_TAX, CITIES) {
+  myApp.controller('myController', ['currencyService', 'mainConstants', function(currencyService, mainConstants) {
     this.activeTab = true;
     this.countVal = null;
     this.costVal = null;
-    this.currency = getCurrency.loadCache();
+    this.currency = currencyService.loadCache();
     this.currencyFrom = 'USD';
     this.currencyTo = 'EUR';
-    this.percentageTax = PERCENTAGE_TAX;
-    this.citiesLocation = CITIES;
+    this.percentageTax = mainConstants.percentageTax;
+    this.citiesLocation = mainConstants.cities;
+
     this.changeValues = () => {
       [this.countVal, this.costVal] = [this.costVal, this.countVal];
       [this.currencyFrom, this.currencyTo] = [this.currencyTo, this.currencyFrom];
@@ -28,7 +29,9 @@
         }
       });
     };
+
     this.addCommissions = e => {
+      this.convertValue();
       this.costVal -= currencyService.addCommission(this.costVal, e.target.value);
     };
   }]);
