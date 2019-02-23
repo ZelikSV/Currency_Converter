@@ -30,34 +30,34 @@ myApp.service('currencyService', function() {
   };
 });
 
-myApp.controller('myController', ['$scope', 'getCurrency', 'currencyService', function($scope, getCurrency, currencyService) {
-  $scope.activeTab = true;
-  $scope.countVal = null;
-  $scope.costVal = null;
-  $scope.currency = getCurrency.loadCache();
-  $scope.currencyFrom = 'USD';
-  $scope.currencyTo = 'EUR';
+myApp.controller('myController', ['getCurrency', 'currencyService', function(getCurrency, currencyService) {
+  this.activeTab = true;
+  this.countVal = null;
+  this.costVal = null;
+  this.currency = getCurrency.loadCache();
+  this.currencyFrom = 'USD';
+  this.currencyTo = 'EUR';
 
-  $scope.changeValues = () => {
-    [$scope.countVal, $scope.costVal] = [$scope.costVal, $scope.countVal];
-    [$scope.currencyFrom, $scope.currencyTo] = [$scope.currencyTo, $scope.currencyFrom];
+  this.changeValues = () => {
+    [this.countVal, this.costVal] = [this.costVal, this.countVal];
+    [this.currencyFrom, this.currencyTo] = [this.currencyTo, this.currencyFrom];
   };
 
-  $scope.convertValue = () => {
+  this.convertValue = () => {
     let res = 0;
-    $scope.currency.forEach(item => {
-      if (item.ccy === $scope.currencyFrom) {
-        res = currencyService.convertToUa($scope.countVal, item.buy);
+    this.currency.forEach(item => {
+      if (item.ccy === this.currencyFrom) {
+        res = currencyService.convertToUa(this.countVal, item.buy);
       }
     });
 
-    $scope.currency.forEach(item => {
-      if (item.ccy === $scope.currencyTo) {
-        $scope.costVal = currencyService.convertFromUa(res, item.sale);
+    this.currency.forEach(item => {
+      if (item.ccy === this.currencyTo) {
+        this.costVal = currencyService.convertFromUa(res, item.sale);
       }
     });
   };
-  $scope.addCommissions = e => {
-    $scope.costVal -= currencyService.addCommission($scope.costVal, e.target.value);
+  this.addCommissions = e => {
+    this.costVal -= currencyService.addCommission(this.costVal, e.target.value);
   };
 }]);
