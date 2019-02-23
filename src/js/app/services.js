@@ -30,4 +30,5 @@
       return res;
     };
   });
+  myApp.constant('PERCENTAGE_TAX', [0, 1, 2, 3, 4, 5]);
 }());
