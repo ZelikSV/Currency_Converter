@@ -36,8 +36,8 @@
                     name="currency-sell"
                     ng-model="mc.currencyFrom"
                     ng-click="mc.convertValue()"
+                    ng-options='item.ccy as item.ccy for item in mc.currency | currencyFilter: mc.currencyTo'
                   >
-                    <option ng-repeat="item in mc.currency">{{ item.ccy }}</option>
                   </select>
                 </label>
                 <button ng-click="mc.changeValues($event)">&#8660;</button>
@@ -47,8 +47,8 @@
                     name="currency-buy"
                     ng-model="mc.currencyTo"
                     ng-click="mc.convertValue()"
+                    ng-options='item.ccy as item.ccy for item in mc.currency | currencyFilter: mc.currencyFrom'
                   >
-                    <option ng-repeat="item in mc.currency">{{ item.ccy }}</option>
                   </select>
                 </label>
               </div>
@@ -92,8 +92,8 @@
                     name="currency-sell"
                     ng-model="mc.currencyFrom"
                     ng-click="mc.convertValue()"
+                    ng-options='item.ccy as item.ccy for item in mc.currency | currencyFilter: mc.currencyTo'
                   >
-                    <option ng-repeat="item in mc.currency">{{ item.ccy }}</option>
                   </select>
                 </label>
                 <button ng-click="mc.changeValues($event)">&#8660;</button>
@@ -103,8 +103,8 @@
                     name="currency-buy"
                     ng-model="mc.currencyTo"
                     ng-click="mc.convertValue()"
+                    ng-options='item.ccy as item.ccy for item in mc.currency | currencyFilter: mc.currencyFrom'
                   >
-                    <option ng-repeat="item in mc.currency">{{ item.ccy }}</option>
                   </select>
                 </label>
               </div>
