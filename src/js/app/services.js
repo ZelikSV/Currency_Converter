@@ -31,4 +31,5 @@
     };
   });
   myApp.constant('PERCENTAGE_TAX', [0, 1, 2, 3, 4, 5]);
+  myApp.constant('CITIES', ['Kiev', 'Dnieper', 'Kharkov', 'Lvov', 'Zaporozhye', 'Krivoy Rog']);
 }());
