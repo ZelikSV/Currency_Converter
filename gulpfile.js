@@ -8,6 +8,7 @@ const babel = require('gulp-babel');
 const imagemin = require('gulp-imagemin');
 const browserSync = require('browser-sync').create();
 const concat = require('gulp-concat');
+const htmlreplace = require('gulp-html-replace');
 
 const path = {
   build: {
@@ -25,8 +26,12 @@ const path = {
   }
 };
 
-gulp.task('html', function() {
+gulp.task('index', function() {
   gulp.src(path.src.html)
+    .pipe(htmlreplace({
+        'css': 'css/style.css',
+        'js': 'js/index.js'
+    }))
     .pipe(gulp.dest(path.build.html));
 });
 
@@ -37,9 +42,26 @@ gulp.task('script', function() {
     .pipe(gulp.dest(path.build.js));
 });
 
+gulp.task('script:build', function() {
+  return gulp.src(['src/js/app/services.js', 'src/js/app/controllers.js', 'src/js/index.js'])
+    .pipe(concat('index.js'))
+    .pipe(babel({
+      presets: ['env']
+      }))
+    .pipe(uglify())
+    .pipe(gulp.dest(path.build.js));
+});
+
+
 gulp.task('style', function() {
   gulp.src(path.src.style)
-    .pipe(plumber())
+  .pipe(plumber())
+  .pipe(sass())
+  .pipe(gulp.dest(path.build.css));
+});
+
+gulp.task('style:build', function() {
+  gulp.src(path.src.style)
     .pipe(sass())
     .pipe(autoprefixer({
       browsers: ['last 2 versions'],
@@ -58,23 +80,23 @@ gulp.task('image', function() {
     .pipe(gulp.dest(path.build.img))
 });
 
-
-gulp.task('server', ['html', 'script', 'style'], function(done) {
+gulp.task('server', ['index', 'script', 'style'], function(done) {
   browserSync.init({
     server: {
       baseDir: './build/'
     },
     host: 'localhost',
-    files: ['./build/index.html', './build/js/*.js', './build/css/*.css']
+    files: [path.build.html, path.build.js, path.build.css]
   });
   done();
 });
 
 gulp.task('watch', function() {
-  gulp.watch(path.src.html, ['html']);
+  gulp.watch(path.src.html, ['index']);
   gulp.watch(path.src.style, ['style']);
   gulp.watch(path.src.js, ['script']);
 });
 
 
 gulp.task('default', ['watch', 'server']);
+gulp.task('build', ['index', 'script:build', 'style:build', 'image']);
