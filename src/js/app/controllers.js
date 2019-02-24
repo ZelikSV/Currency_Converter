@@ -9,6 +9,8 @@
     this.currencyTo = 'EUR';
     this.percentageTax = mainConstants.percentageTax;
     this.citiesLocation = mainConstants.cities;
+    this.city = 'Kiev';
+    this.commissionValue = 0;
 
     this.changeValues = () => {
       [this.countVal, this.costVal] = [this.costVal, this.countVal];
@@ -16,23 +18,17 @@
     };
 
     this.convertValue = () => {
+      const indexBuy = this.currency.findIndex(item => item.ccy === this.currencyFrom);
+      const indexSale = this.currency.findIndex(item => item.ccy === this.currencyTo);
       let res = 0;
-      this.currency.forEach(item => {
-        if (item.ccy === this.currencyFrom) {
-          res = currencyService.convertToUa(this.countVal, item.buy);
-        }
-      });
 
-      this.currency.forEach(item => {
-        if (item.ccy === this.currencyTo) {
-          this.costVal = currencyService.convertFromUa(res, item.sale);
-        }
-      });
+      res = currencyService.convertToUa(this.countVal, this.currency[indexBuy].buy);
+      this.costVal = currencyService.convertFromUa(res, this.currency[indexSale].sale);
     };
 
-    this.addCommissions = e => {
+    this.addCommissions = () => {
       this.convertValue();
-      this.costVal -= currencyService.addCommission(this.costVal, e.target.value);
+      this.costVal -= currencyService.addCommission(this.costVal, this.commissionValue);
     };
   }]);
 

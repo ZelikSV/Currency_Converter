@@ -29,14 +29,14 @@
             </li>
           </ul>
           <div class="tabs-content">
-            <div ng-show="mc.activeTab === true" class="tabs-content-sell">
+            <div ng-show="mc.activeTab" class="tabs-content-sell">
               <div class="currency-line">
                 <label>
                   <p>give back</p>
                   <select
                     name="currency-sell"
                     ng-model="mc.currencyFrom"
-                    ng-click="mc.convertValue()"
+                    ng-change="mc.convertValue()"
                     ng-options='item.ccy as item.ccy for item in mc.currency | currencyFilter: mc.currencyTo'
                   >
                   </select>
@@ -47,7 +47,7 @@
                   <select
                     name="currency-buy"
                     ng-model="mc.currencyTo"
-                    ng-click="mc.convertValue()"
+                    ng-change="mc.convertValue()"
                     ng-options='item.ccy as item.ccy for item in mc.currency | currencyFilter: mc.currencyFrom'
                   >
                   </select>
@@ -60,20 +60,22 @@
                     type="number"
                     min="0"
                     ng-model="mc.countVal"
-                    ng-change="mc.convertValue($event)"
+                    ng-change="mc.convertValue()"
                   />
                 </label>
                 <label>
                   <p>How much will we get</p>
-                  <input type="number" readonly ng-model="mc.costVal" />
+                  <input type="text" readonly ng-model="mc.costVal" ng-value="mc.costVal | number:2"/>
                 </label>
               </div>
               <div class="bottom-btns-wrap">
-                <select name="commission" ng-click="mc.addCommissions($event)">
-                  <option ng-repeat='item in mc.percentageTax' value={{item}}>Commission {{item}}%</option>
-                </select>
-                <select name="city">
-                  <option ng-repeat='item in mc.citiesLocation' value={{item}}>{{item}}</option>
+                  <label>
+                      Commission 
+                       <select name="commission" ng-model="mc.commissionValue" ng-change="mc.addCommissions($event)" ng-options='item as item for item in mc.percentageTax'>
+                    </select>
+                    %
+                    </label>
+                <select name="city" ng-model="mc.city" ng-options='item as item for item in mc.citiesLocation'>
                 </select>
               </div>
             </div>
@@ -84,18 +86,18 @@
                   <select
                     name="currency-sell"
                     ng-model="mc.currencyFrom"
-                    ng-click="mc.convertValue()"
+                    ng-change="mc.convertValue()"
                     ng-options='item.ccy as item.ccy for item in mc.currency | currencyFilter: mc.currencyTo'
                   >
                   </select>
                 </label>
-                <button ng-click="mc.changeValues($event)">&#8660;</button>
+                <button ng-click="mc.changeValues()">&#8660;</button>
                 <label>
                   <p>we get</p>
                   <select
                     name="currency-buy"
                     ng-model="mc.currencyTo"
-                    ng-click="mc.convertValue()"
+                    ng-change="mc.convertValue()"
                     ng-options='item.ccy as item.ccy for item in mc.currency | currencyFilter: mc.currencyFrom'
                   >
                   </select>
@@ -108,21 +110,23 @@
                     type="number"
                     min="0"
                     ng-model="mc.countVal"
-                    ng-change="mc.convertValue($event)"
+                    ng-change="mc.convertValue()"
                   />
                 </label>
                 <label>
                   <p>How much will we get
                   </p>
-                  <input type="number" readonly ng-model="mc.costVal" />
+                  <input type="text" readonly ng-model="mc.costVal" ng-value="mc.costVal | number:2"/>
                 </label>
               </div>
               <div class="bottom-btns-wrap">
-                <select name="commission" ng-click="mc.addCommissions($event)">
-                  <option ng-repeat='item in mc.percentageTax' value={{item}}>Commission {{item}}%</option>
+                <label>
+                  Commission 
+                   <select name="commission" ng-model="mc.commissionValue" ng-change="mc.addCommissions($event)" ng-options='item as item for item in mc.percentageTax'>
                 </select>
-                <select name="city">
-                  <option ng-repeat='item in mc.citiesLocation' value={{item}} >{{item}}</option>
+                %
+                </label>
+                <select name="city" ng-model="mc.city" ng-options='item as item for item in mc.citiesLocation'>
                 </select>
               </div>
             </div>
