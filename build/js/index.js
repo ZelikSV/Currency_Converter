@@ -45,8 +45,8 @@
     this.countVal = null;
     this.costVal = null;
     this.currency = currencyService.loadCache();
-    this.currencyFrom = 'USD';
-    this.currencyTo = 'EUR';
+    this.currencyFrom = { ccy: 'USD', buy: '26.85000', sale: '27.15000', $$hashKey: 'object:3' };
+    this.currencyTo = { ccy: 'EUR', buy: '30.30000', sale: '30.80000', $$hashKey: 'object:6' };
     this.percentageTax = mainConstants.percentageTax;
     this.citiesLocation = mainConstants.cities;
     this.city = 'Kiev';
@@ -58,12 +58,10 @@
     };
 
     this.convertValue = () => {
-      const indexBuy = this.currency.findIndex(item => item.ccy === this.currencyFrom);
-      const indexSale = this.currency.findIndex(item => item.ccy === this.currencyTo);
       let res = 0;
 
-      res = currencyService.convertToUa(this.countVal, this.currency[indexBuy].buy);
-      this.costVal = currencyService.convertFromUa(res, this.currency[indexSale].sale);
+      res = currencyService.convertToUa(this.countVal, this.currencyFrom.buy);
+      this.costVal = currencyService.convertFromUa(res, this.currencyTo.sale);
     };
 
     this.addCommissions = () => {
