@@ -15,15 +15,13 @@
 
     this.convertToUa = (from, to) => {
       let result = 0;
-      result = Math.round(from * to);
-
+      result = from * to;
       return result;
     };
 
     this.convertFromUa = (from, to) => {
       let res = 0;
       res = from / to;
-      res = Number(res.toFixed(2));
       return res;
     };
 
@@ -51,6 +49,8 @@
     this.currencyTo = 'EUR';
     this.percentageTax = mainConstants.percentageTax;
     this.citiesLocation = mainConstants.cities;
+    this.city = 'Kiev';
+    this.commissionValue = 0;
 
     this.changeValues = () => {
       [this.countVal, this.costVal] = [this.costVal, this.countVal];
@@ -72,9 +72,9 @@
       });
     };
 
-    this.addCommissions = e => {
+    this.addCommissions = () => {
       this.convertValue();
-      this.costVal -= currencyService.addCommission(this.costVal, e.target.value);
+      this.costVal -= currencyService.addCommission(this.costVal, this.commissionValue);
     };
   }]);
 

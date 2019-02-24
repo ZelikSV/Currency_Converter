@@ -9,6 +9,8 @@
     this.currencyTo = 'EUR';
     this.percentageTax = mainConstants.percentageTax;
     this.citiesLocation = mainConstants.cities;
+    this.city = 'Kiev';
+    this.commissionValue = 0;
 
     this.changeValues = () => {
       [this.countVal, this.costVal] = [this.costVal, this.countVal];
@@ -30,9 +32,9 @@
       });
     };
 
-    this.addCommissions = e => {
+    this.addCommissions = () => {
       this.convertValue();
-      this.costVal -= currencyService.addCommission(this.costVal, e.target.value);
+      this.costVal -= currencyService.addCommission(this.costVal, this.commissionValue);
     };
   }]);
 
