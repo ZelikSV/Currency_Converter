@@ -6,7 +6,7 @@
     this.costVal = null;
     this.currency = currencyService.loadCache();
     this.currencyFrom = { ccy: 'USD', buy: '26.85000', sale: '27.15000', $$hashKey: 'object:3' };
-    this.currencyTo = { ccy: 'EUR', buy: '30.30000', sale: '30.80000', $$hashKey: 'object:6' };
+    this.currencyTo = { ccy: 'EUR', buy: '30.30000', sale: '30.80000', $$hashKey: 'object:7' };
     this.percentageTax = mainConstants.percentageTax;
     this.citiesLocation = mainConstants.cities;
     this.city = 'Kiev';
