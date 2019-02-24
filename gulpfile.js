@@ -43,7 +43,7 @@ gulp.task('script', function() {
 });
 
 gulp.task('script:build', function() {
-  return gulp.src(['src/js/app/services.js', 'src/js/app/controllers.js', 'src/js/index.js'])
+  return gulp.src(['src/js/index.js', 'src/js/app/services.js', 'src/js/app/controllers.js'])
     .pipe(concat('index.js'))
     .pipe(babel({
       presets: ['env']
