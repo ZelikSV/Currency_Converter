@@ -239,3 +239,5 @@ select {
   display: flex;
   justify-content: space-between;
   align-items: center; }
+  .bottom-btns-wrap label {
+    color: #063b8c; }

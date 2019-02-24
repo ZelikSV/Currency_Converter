@@ -59,18 +59,21 @@
                     type="number"
                     min="0"
                     ng-model="mc.countVal"
-                    ng-change="mc.convertValue($event)"
-                    ng-value="mc.countVal | number: 2"
+                    ng-change="mc.convertValue()"
                   />
                 </label>
                 <label>
                   <p>How much will we get</p>
-                  <input type="number" readonly ng-model="mc.costVal" ng-value="mc.costVal | number:2"/>
+                  <input type="text" readonly ng-model="mc.costVal" ng-value="mc.costVal | number:2"/>
                 </label>
               </div>
               <div class="bottom-btns-wrap">
-                <select name="commission" ng-model="mc.commissionValue" ng-change="mc.addCommissions($event)" ng-options='item as item for item in mc.percentageTax'>
-                </select>
+                  <label>
+                      Commission 
+                       <select name="commission" ng-model="mc.commissionValue" ng-change="mc.addCommissions($event)" ng-options='item as item for item in mc.percentageTax'>
+                    </select>
+                    %
+                    </label>
                 <select name="city" ng-model="mc.city" ng-options='item as item for item in mc.citiesLocation'>
                 </select>
               </div>
@@ -87,7 +90,7 @@
                   >
                   </select>
                 </label>
-                <button ng-click="mc.changeValues($event)">&#8660;</button>
+                <button ng-click="mc.changeValues()">&#8660;</button>
                 <label>
                   <p>we get</p>
                   <select
@@ -106,19 +109,22 @@
                     type="number"
                     min="0"
                     ng-model="mc.countVal"
-                    ng-change="mc.convertValue($event)"
-                    ng-value="mc.countVal | number: 2"
+                    ng-change="mc.convertValue()"
                   />
                 </label>
                 <label>
                   <p>How much will we get
                   </p>
-                  <input type="number" readonly ng-model="mc.costVal" ng-value="mc.costVal | number:2"/>
+                  <input type="text" readonly ng-model="mc.costVal" ng-value="mc.costVal | number:2"/>
                 </label>
               </div>
               <div class="bottom-btns-wrap">
-                <select name="commission" ng-model="mc.commissionValue" ng-change="mc.addCommissions($event)" ng-options='item as item for item in mc.percentageTax'>
+                <label>
+                  Commission 
+                   <select name="commission" ng-model="mc.commissionValue" ng-change="mc.addCommissions($event)" ng-options='item as item for item in mc.percentageTax'>
                 </select>
+                %
+                </label>
                 <select name="city" ng-model="mc.city" ng-options='item as item for item in mc.citiesLocation'>
                 </select>
               </div>
