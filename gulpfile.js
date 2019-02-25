@@ -36,14 +36,14 @@ gulp.task('index', function() {
 });
 
 gulp.task('script', function() {
-  return gulp.src(['src/js/index.js', 'src/js/app/services.js', 'src/js/app/controllers.js'])
+  return gulp.src(['src/js/index.js', 'src/js/app/services.js', 'src/js/app/filter.js', 'src/js/app/controllers.js'])
     .pipe(concat('index.js'))
     .pipe(plumber())
     .pipe(gulp.dest(path.build.js));
 });
 
 gulp.task('script:build', function() {
-  return gulp.src(['src/js/index.js', 'src/js/app/services.js', 'src/js/app/controllers.js'])
+  return gulp.src(['src/js/index.js', 'src/js/app/services.js', 'src/js/app/filter.js', 'src/js/app/controllers.js'])
     .pipe(concat('index.js'))
     .pipe(babel({
       presets: ['env']
