@@ -39,7 +39,6 @@
                     ng-change="mc.convertValue()"
                     ng-options='item.ccy for item in mc.currency | currencyFilter: mc.currencyTo.ccy'
                   >
-                  <option value="Choose currency"></option>
                   </select>
                 </label>
                 <button ng-click="mc.changeValues($event)">&#8660;</button>
@@ -51,7 +50,6 @@
                     ng-change="mc.convertValue()"
                     ng-options='item.ccy for item in mc.currency | currencyFilter: mc.currencyFrom.ccy'
                   >
-                  <option value="Choose currency" default></option>
                   </select>
                 </label>
               </div>
