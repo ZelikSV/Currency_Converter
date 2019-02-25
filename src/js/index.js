@@ -1,4 +1,4 @@
-/* global myApp, angular*/
+/* global angular*/
 (function() {
   const myApp = angular.module('myApp', []);
   window.myApp = myApp;
