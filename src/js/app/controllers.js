@@ -4,7 +4,6 @@
     'currencyService',
     'mainConstants',
     '$scope', function(currencyService, mainConstants, $scope) {
-
       this.countVal = null;
       this.costVal = null;
       this.currency = currencyService.loadCache();
@@ -38,4 +37,9 @@
         this.costVal -= currencyService.countTax(this.costVal, this.taxValue);
       };
     }]);
+
+  myApp.component('myConverter', {
+    templateUrl: 'my-app.html',
+    replace: false
+  });
 }());

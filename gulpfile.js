@@ -35,6 +35,11 @@ gulp.task('index', function() {
     .pipe(gulp.dest(path.build.html));
 });
 
+gulp.task('html', function() {
+  gulp.src('src/my-app.html')
+    .pipe(gulp.dest(path.build.html));
+});
+
 gulp.task('script', function() {
   return gulp.src(['src/js/index.js', 'src/js/app/services.js', 'src/js/app/filter.js', 'src/js/app/controllers.js'])
     .pipe(concat('index.js'))
@@ -80,7 +85,7 @@ gulp.task('image', function() {
     .pipe(gulp.dest(path.build.img))
 });
 
-gulp.task('server', ['index', 'script', 'style'], function(done) {
+gulp.task('server', ['index', 'html', 'script', 'style'], function(done) {
   browserSync.init({
     server: {
       baseDir: './build/'
@@ -99,4 +104,4 @@ gulp.task('watch', function() {
 
 
 gulp.task('default', ['watch', 'server']);
-gulp.task('build', ['index', 'script:build', 'style:build', 'image']);
+gulp.task('build', ['index', 'html', 'script:build', 'style:build', 'image']);
