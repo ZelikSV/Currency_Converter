@@ -15,15 +15,7 @@
       this.city = mainConstants.cities[0];
       this.taxValue = mainConstants.percentageTax[0];
 
-      $scope.$watch('mc.currencyFrom', () => {
-        this.convertValue();
-      });
-
-      $scope.$watch('mc.currencyTo', () => {
-        this.convertValue();
-      });
-
-      $scope.$watch('mc.countVal', () => {
+      $scope.$watchGroup(['mc.currencyFrom', 'mc.currencyTo', 'mc.countVal'], () => {
         this.convertValue();
       });
 
