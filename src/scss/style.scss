@@ -11,6 +11,29 @@ body{
     margin: 0 auto;
     text-align: center;
 }
+.menu-wraper{
+    width: 100%;
+    line-height: 60px;
+    &-content{
+        width: 25%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-left: auto;
+        margin-right: 50px;
+        li {
+            a{
+                color: #fff;
+                transition: .3s linear;
+                line-height: 30px;
+                &:hover{
+                    color: #e0d1be;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
 h1{
     text-transform: capitalize;
     font-size: 50px;
@@ -130,3 +153,171 @@ background: rgba(255, 255, 255, .8);
         transform: translate(-50%, 0%);
     }
 }
+
+.login.login-wrapper {
+    margin: 20px auto;
+    width: 300px;
+    .login-screen {
+        background-color: #FFF;
+        padding: 20px;
+        border-radius: 5px
+        }
+        
+        .app-title {
+        text-align: center;
+        color: #777;
+        }
+        
+        .login-form {
+        text-align: center;
+        }
+        .control-group {
+        margin-bottom: 10px;
+        }
+        
+        input {
+        text-align: center;
+        background-color: #ECF0F1;
+        border: 2px solid transparent;
+        border-radius: 3px;
+        font-size: 16px;
+        font-weight: 200;
+        padding: 10px 0;
+        width: 250px;
+        transition: border .5s;
+        }
+        
+        input:focus {
+        border: 2px solid #3498DB;
+        box-shadow: none;
+        }
+        
+        .btn {
+          border: 2px solid transparent;
+          background: #3498DB;
+          color: #ffffff;
+          font-size: 16px;
+          line-height: 25px;
+          padding: 10px 0;
+          text-decoration: none;
+          text-shadow: none;
+          border-radius: 3px;
+          box-shadow: none;
+          transition: 0.25s;
+          display: block;
+          width: 250px;
+          margin: 0 auto;
+        }
+        
+        .btn:hover {
+          background-color: #2980B9;
+        }
+        
+        .login-link {
+          font-size: 12px;
+          color: #444;
+          display: block;
+            margin-top: 12px;
+        }
+    }
+
+    .page{
+        width: 80%;
+        margin: 0 auto;
+        padding: 50px 0;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    .dates-block,
+    .weather-block{
+        width: 300px;
+        position: relative;
+        line-height: 150px;
+        font-size: 80px;
+        background: rgba(0, 0, 0, .5);
+        text-align: center;
+        border-radius: 5px;
+        margin-bottom: 50px;
+        &:before{
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background: #063b8c;
+            border-radius: 0 0 5px 5px;
+            height: 40px;
+            width: 100%;
+        }
+        p{
+            padding-bottom: 20px;
+        }
+        h2{
+            position: absolute;
+            font-size: 20px;
+            bottom: 0;
+            left: 50%;
+            transform: translate(-50%, 37%);
+        }
+    }
+    .weather-block{
+        background: url('../img/weather.jpg') no-repeat 0% 0% /cover;
+        &:before{
+            top: 0;
+            border-radius: 5px 5px 0 0;
+        }
+        p{
+            padding-top: 20px;
+            padding-bottom: 0;
+        }
+        h2{
+            
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -29%);
+        }
+        .value-weather{
+            position: absolute;
+            font-size: 20px;
+            bottom: 0;
+            left: 50%;
+            transform: translate(-50%, 37%);
+        }
+    }
+    .news-block{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        .news-content-card{
+            display: flex;
+            width: 40%;
+            background: #fff;
+            border-radius: 5px;
+            padding: 20px 10px 10px 20px;
+            color: #000;
+            text-align: center;
+            margin-bottom: 40px;
+            .img-part{
+                width: 40%;
+                img{
+                    width: 100%;
+                    height: auto;
+                }
+            }
+                .text-part{
+                    width: 50%;
+                    h2{
+                        font-size: 20px;
+                        margin-bottom: 10px;
+                    }
+                    p{
+                        font-size: 12px;
+                    }
+                }
+       
+           
+        }
+    }

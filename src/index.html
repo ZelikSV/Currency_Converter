@@ -12,7 +12,25 @@
     </head>
     <body>
     <div class="container" ng-app="myApp">
-      <my-converter></my-converter>
+      <nav class="menu-wraper">
+        <ul class="menu-wraper-content">
+          <li>
+              <a ui-sref="home" ui-sref-active="active">Home</a>
+          </li>
+          <li>
+              <a ui-sref="converter" ui-sref-active="active">Converter</a>
+          </li>
+          <li>
+              <a ui-sref="contacts" ui-sref-active="active">Contacts</a>
+          </li>
+          <li>
+              <a ui-sref="login" ui-sref-active="active">login</a>
+          </li>
+        </ul>
+      </nav>
+
+      <ui-view></ui-view>
+
       <div class="modal-net-checker" net-checker ng-hide='netActive'>
           <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
           viewBox="0 0 473.931 473.931" style="enable-background:new 0 0 473.931 473.931;" xml:space="preserve">
@@ -36,6 +54,7 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.7/angular.min.js"></script>
       <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
       <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+      <script src="//unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
       <!-- build:js -->
       <!-- endbuild -->
     </body>
