@@ -44,7 +44,7 @@
     }]);
 
   myApp.component('myConverter', {
-    templateUrl: 'my-app.html',
+    templateUrl: 'my-converter.html',
     replace: true
   });
 }());
