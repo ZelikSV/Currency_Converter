@@ -2,7 +2,8 @@
 (function() {
   myApp.component('myConverter', {
     templateUrl: 'my-converter.html',
-    replace: true,
-    controller: 'myController'
+    replace: false,
+    controller: 'myController',
+    controllerAs: 'mc'
   });
 }());
