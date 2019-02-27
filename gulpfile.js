@@ -35,15 +35,34 @@ gulp.task('index', function() {
     .pipe(gulp.dest(path.build.html));
 });
 
+gulp.task('html', function() {
+  gulp.src('src/js/components/myConverter/template/my-converter.html')
+    .pipe(gulp.dest(path.build.html));
+});
+
 gulp.task('script', function() {
-  return gulp.src(['src/js/index.js', 'src/js/app/services.js', 'src/js/app/filter.js', 'src/js/app/controllers.js'])
+  return gulp.src([
+   'src/js/index.js',
+   'src/js/components/myConverter/myConverter.service.js',
+   'src/js/directives/netChecker.directive.js',
+   'src/js/components/myConverter/myConverter.js',
+   'src/js/components/myConverter/myConverter.filter.js',
+   'src/js/components/myConverter/myConverter.controller.js'
+  ])
     .pipe(concat('index.js'))
     .pipe(plumber())
     .pipe(gulp.dest(path.build.js));
 });
 
 gulp.task('script:build', function() {
-  return gulp.src(['src/js/index.js', 'src/js/app/services.js', 'src/js/app/filter.js', 'src/js/app/controllers.js'])
+  return gulp.src([
+   'src/js/index.js',
+   'src/js/components/myConverter/myConverter.service.js',
+   'src/js/directives/netChecker.directive.js',
+   'src/js/components/myConverter/myConverter.js',
+   'src/js/components/myConverter/myConverter.filter.js',
+   'src/js/components/myConverter/myConverter.controller.js'
+  ])
     .pipe(concat('index.js'))
     .pipe(babel({
       presets: ['env']
@@ -80,7 +99,7 @@ gulp.task('image', function() {
     .pipe(gulp.dest(path.build.img))
 });
 
-gulp.task('server', ['index', 'script', 'style'], function(done) {
+gulp.task('server', ['index', 'html', 'script', 'style'], function(done) {
   browserSync.init({
     server: {
       baseDir: './build/'
@@ -93,10 +112,11 @@ gulp.task('server', ['index', 'script', 'style'], function(done) {
 
 gulp.task('watch', function() {
   gulp.watch(path.src.html, ['index']);
+  gulp.watch(path.src.html, ['html']);
   gulp.watch(path.src.style, ['style']);
   gulp.watch(path.src.js, ['script']);
 });
 
 
 gulp.task('default', ['watch', 'server']);
-gulp.task('build', ['index', 'script:build', 'style:build', 'image']);
+gulp.task('build', ['index', 'html', 'script:build', 'style:build', 'image']);

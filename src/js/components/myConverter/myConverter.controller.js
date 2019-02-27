@@ -1,10 +1,10 @@
-/* global myApp */
+/* global myApp, Firebase */
 (function() {
   myApp.controller('myController', [
     'currencyService',
     'mainConstants',
-    '$scope', function(currencyService, mainConstants, $scope) {
-
+    '$scope',
+    '$firebase', function(currencyService, mainConstants, $scope, $firebase) {
       this.countVal = null;
       this.costVal = null;
       this.currency = currencyService.loadCache();
@@ -14,6 +14,10 @@
       this.citiesLocation = mainConstants.cities;
       this.city = mainConstants.cities[0];
       this.taxValue = mainConstants.percentageTax[0];
+
+      const dbLink = firebase.database().ref()
+.child('text');
+      dbLink.on('value', snap => console.log(snap));
 
       $scope.$watchGroup(['mc.currencyFrom', 'mc.currencyTo', 'mc.countVal'], () => {
         this.convertValue();
