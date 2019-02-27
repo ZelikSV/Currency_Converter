@@ -36,19 +36,33 @@ gulp.task('index', function() {
 });
 
 gulp.task('html', function() {
-  gulp.src('src/my-converter.html')
+  gulp.src('src/js/components/myConverter/template/my-converter.html')
     .pipe(gulp.dest(path.build.html));
 });
 
 gulp.task('script', function() {
-  return gulp.src(['src/js/index.js', 'src/js/app/myConverter.js', 'src/js/app/netChecker.directive.js', 'src/js/app/services.js', 'src/js/app/filter.js', 'src/js/app/controllers.js'])
+  return gulp.src([
+   'src/js/index.js',
+   'src/js/components/myConverter/myConverter.service.js',
+   'src/js/directives/netChecker.directive.js',
+   'src/js/components/myConverter/myConverter.js',
+   'src/js/components/myConverter/myConverter.filter.js',
+   'src/js/components/myConverter/myConverter.controller.js'
+  ])
     .pipe(concat('index.js'))
     .pipe(plumber())
     .pipe(gulp.dest(path.build.js));
 });
 
 gulp.task('script:build', function() {
-  return gulp.src(['src/js/index.js', 'src/js/app/myConverter.js', 'src/js/app/netChecker.directive.js', 'src/js/app/services.js', 'src/js/app/filter.js', 'src/js/app/controllers.js'])
+  return gulp.src([
+   'src/js/index.js',
+   'src/js/components/myConverter/myConverter.service.js',
+   'src/js/directives/netChecker.directive.js',
+   'src/js/components/myConverter/myConverter.js',
+   'src/js/components/myConverter/myConverter.filter.js',
+   'src/js/components/myConverter/myConverter.controller.js'
+  ])
     .pipe(concat('index.js'))
     .pipe(babel({
       presets: ['env']
