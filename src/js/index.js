@@ -10,20 +10,19 @@
     messagingSenderId: '1034697496097'
   };
 
+  myApp.directive('netChecker', function() {
+    return {
+      restrict: 'A'
+    };
+  });
+
   firebase.initializeApp(config);
+
   myApp.config(['currencyServiceProvider', function(currencyServiceProvider) {
     currencyServiceProvider.setAPI('https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5');
   }])
-    .run([function() {
-      myApp.directive('netChecker', function() {
-        return {
-          restrict: 'E',
-          template: '<div><p>Sorry, but your internet connection is over</p></div>',
-          link(scope, element, attrs) {
-            console.log(window.navigator.onLine);
-          }
-        };
-      });
-    }]);
+    .run(function($rootScope) {
+      $rootScope.netActive = navigator.onLine;
+    });
   window.myApp = myApp;
 }());

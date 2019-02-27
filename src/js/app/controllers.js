@@ -15,8 +15,9 @@
       this.city = mainConstants.cities[0];
       this.taxValue = mainConstants.percentageTax[0];
 
-      const dbLink = firebase.database().ref().child('text');
-      dbLink.on('value', snap => snap.node_.value_);
+      const dbLink = firebase.database().ref()
+.child('text');
+      dbLink.on('value', snap => console.log(snap));
 
       $scope.$watchGroup(['mc.currencyFrom', 'mc.currencyTo', 'mc.countVal'], () => {
         this.convertValue();

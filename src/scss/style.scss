@@ -103,3 +103,30 @@ select{
         color: #063b8c;
     }
 }
+.modal-net-checker{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+background: rgba(255, 255, 255, .8);
+    svg{
+        width: 60px;
+        height: 60px;
+        transform: translate(-50%, -50%);
+    }
+    p,
+    svg{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+    }
+    p{
+        font-family: 'Abril Fatface', cursive;
+        font-weight: 800;
+        font-size: 35px;
+        color: #063b8c;
+        top: 60%;
+        transform: translate(-50%, 0%);
+    }
+}
