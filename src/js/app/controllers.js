@@ -42,9 +42,4 @@
         this.costVal -= currencyService.countTax(this.costVal, this.taxValue);
       };
     }]);
-
-  myApp.component('myConverter', {
-    templateUrl: 'my-converter.html',
-    replace: true
-  });
 }());

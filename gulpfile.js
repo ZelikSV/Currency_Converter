@@ -36,7 +36,7 @@ gulp.task('index', function() {
 });
 
 gulp.task('html', function() {
-  gulp.src('src/my-app.html')
+  gulp.src('src/my-converter.html')
     .pipe(gulp.dest(path.build.html));
 });
 

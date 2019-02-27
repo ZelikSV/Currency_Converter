@@ -16,6 +16,11 @@
     };
   });
 
+  myApp.component('myConverter', {
+    templateUrl: 'my-converter.html',
+    replace: true
+  });
+
   firebase.initializeApp(config);
 
   myApp.config(['currencyServiceProvider', function(currencyServiceProvider) {
