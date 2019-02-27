@@ -41,14 +41,14 @@ gulp.task('html', function() {
 });
 
 gulp.task('script', function() {
-  return gulp.src(['src/js/index.js', 'src/js/app/services.js', 'src/js/app/filter.js', 'src/js/app/controllers.js'])
+  return gulp.src(['src/js/index.js', 'src/js/app/myConverter.js', 'src/js/app/netChecker.directive.js', 'src/js/app/services.js', 'src/js/app/filter.js', 'src/js/app/controllers.js'])
     .pipe(concat('index.js'))
     .pipe(plumber())
     .pipe(gulp.dest(path.build.js));
 });
 
 gulp.task('script:build', function() {
-  return gulp.src(['src/js/index.js', 'src/js/app/services.js', 'src/js/app/filter.js', 'src/js/app/controllers.js'])
+  return gulp.src(['src/js/index.js', 'src/js/app/myConverter.js', 'src/js/app/netChecker.directive.js', 'src/js/app/services.js', 'src/js/app/filter.js', 'src/js/app/controllers.js'])
     .pipe(concat('index.js'))
     .pipe(babel({
       presets: ['env']
@@ -98,6 +98,7 @@ gulp.task('server', ['index', 'html', 'script', 'style'], function(done) {
 
 gulp.task('watch', function() {
   gulp.watch(path.src.html, ['index']);
+  gulp.watch(path.src.html, ['html']);
   gulp.watch(path.src.style, ['style']);
   gulp.watch(path.src.js, ['script']);
 });

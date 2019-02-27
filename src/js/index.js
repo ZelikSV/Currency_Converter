@@ -10,17 +10,6 @@
     messagingSenderId: '1034697496097'
   };
 
-  myApp.directive('netChecker', function() {
-    return {
-      restrict: 'A'
-    };
-  });
-
-  myApp.component('myConverter', {
-    templateUrl: 'my-converter.html',
-    replace: true
-  });
-
   firebase.initializeApp(config);
 
   myApp.config(['currencyServiceProvider', function(currencyServiceProvider) {
