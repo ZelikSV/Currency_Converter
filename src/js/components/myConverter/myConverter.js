@@ -1,8 +1,8 @@
 /* global myApp */
 (function() {
   myApp.component('myConverter', {
-    templateUrl: 'my-converter.html',
-    replace: false,
+    templateUrl: '/components/myConverter/template/my-converter.html',
+    replace: true,
     controller: 'myController',
     controllerAs: 'mc'
   });

@@ -17,22 +17,22 @@
       .state({
         name: 'home',
         url: '/home',
-        templateUrl: 'homePage.html'
+        templateUrl: '/components/homePage/template/homePage.html'
       })
       .state({
         name: 'converter',
-        url: '/converter',
+        url: '/components',
         component: 'myConverter'
       })
       .state({
         name: 'contacts',
         url: '/contacts',
-        template: '<div>Our contacts</div>'
+        templateUrl: '/components/contactsPage/template/contactsPage.html'
       })
       .state({
         name: 'login',
         url: '/login',
-        templateUrl: 'loginForm.html'
+        templateUrl: '/components/loginForm/template/loginForm.html'
       });
 
     currencyServiceProvider.setAPI('https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5');

@@ -36,8 +36,9 @@ gulp.task('index', function() {
 });
 
 gulp.task('html', function() {
-  gulp.src('src/js/components/myConverter/template/my-converter.html')
-    .pipe(gulp.dest(path.build.html));
+  gulp.src('src/js/**/*.html')
+  .pipe(htmlreplace())
+  .pipe(gulp.dest(path.build.html));
 });
 
 gulp.task('script', function() {
