@@ -6,17 +6,16 @@
     return {
       setAPI: apiUrl => (API = apiUrl),
 
-      list: [],
-
-      $get: ['$http', function($http) {
+      $get: ['$http', '$firebase', function($http, $firebase) {
         return {
           loadCache: () => {
+            const list = [];
             $http.get(API)
               .then(({ data }) => {
-                data.forEach(item => this.list.push(item));
-                this.list.push({ ccy: 'UAH', buy: '1', sale: '1' });
+                angular.copy(data, list);
               });
-            return this.list;
+            list.push({ ccy: 'UAH', buy: '1', sale: '1' });
+            return list;
           },
 
           convertToUa(from, to) {
@@ -35,6 +34,11 @@
             const res = sum * pr / 100;
 
             return res;
+          },
+          getDataBaseValues() {
+            const dbLink = firebase.database().ref()
+              .child('text');
+            dbLink.on('value', snap => console.log(snap));
           }
         };
       }]
@@ -44,7 +48,7 @@
   myApp.constant('mainConstants', {
     'percentageTax': [0, 1, 2, 3, 4, 5],
     'cities': ['Kiev', 'Dnieper', 'Kharkov', 'Lvov', 'Zaporozhye', 'Krivoy Rog'],
-    'currency': [{ ccy: 'USD', buy: '26.80000', sale: '27.10000', $$hashKey: 'object:5' },
+    'currency': [{ ccy: 'USD', buy: '26.80000', sale: '27.10000', $$hashKey: 'object:6' },
       { ccy: 'EUR', buy: '30.30000', sale: '30.80000', $$hashKey: 'object:9' }]
   });
 }());

@@ -21,7 +21,7 @@
       })
       .state({
         name: 'converter',
-        url: '/components',
+        url: '/converter',
         component: 'myConverter'
       })
       .state({
