@@ -16,7 +16,7 @@
     $stateProvider
       .state({
         name: 'home',
-        url: '/home',
+        url: '',
         templateUrl: '/components/homePage/template/homePage.html'
       })
       .state({
@@ -33,6 +33,14 @@
         name: 'login',
         url: '/login',
         templateUrl: '/components/loginForm/template/loginForm.html'
+      })
+      .state('login.logout', {
+        url: 'login/logout',
+        templateUrl: '/components/loginForm/template/registration.html'
+      })
+      .state('login.loginenter', {
+        url: 'login/loginenter',
+        templateUrl: '/components/loginForm/template/login.html'
       });
 
     currencyServiceProvider.setAPI('https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5');
