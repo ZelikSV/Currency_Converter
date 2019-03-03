@@ -1,9 +1,11 @@
 <div class="login login-wrapper">
-      <ul class="login-title">
-          <li><a ui-sref="login.logout">Out</a></li>
-          <li><a ui-sref="login.loginenter">Enter</a></li>
-      </ul>
-      <div class="login-container">
-          <ui-view></ui-view>
-      </div>
+    <div class="login-container">
+        <ul class="login-title">
+            <li ng-class="{'active': !fc.activeTab }" ng-click="fc.activeTab = !fc.activeTab"><a ui-sref="login.logout">Sign Up</a></li>
+            <li ng-class="{'active': fc.activeTab}"  ng-click="fc.activeTab = !fc.activeTab"><a ui-sref="login.loginenter">Log in</a></li>
+        </ul>
+        <div class="login-content">
+            <ui-view></ui-view>
+        </div>
+    </div>
 </div>

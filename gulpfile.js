@@ -48,6 +48,7 @@ gulp.task('script', function() {
    'src/js/directives/netChecker.directive.js',
    'src/js/components/myConverter/myConverter.js',
    'src/js/components/myConverter/myConverter.filter.js',
+   'src/js/components/loginForm/login.controller.js',
    'src/js/components/myConverter/myConverter.controller.js'
   ])
     .pipe(concat('index.js'))
@@ -62,6 +63,7 @@ gulp.task('script:build', function() {
    'src/js/directives/netChecker.directive.js',
    'src/js/components/myConverter/myConverter.js',
    'src/js/components/myConverter/myConverter.filter.js',
+   'src/js/components/loginForm/login.controller.js',
    'src/js/components/myConverter/myConverter.controller.js'
   ])
     .pipe(concat('index.js'))

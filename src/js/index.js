@@ -12,39 +12,50 @@
 
   firebase.initializeApp(config);
 
-  myApp.config(['currencyServiceProvider', '$stateProvider', function(currencyServiceProvider, $stateProvider) {
-    $stateProvider
-      .state({
-        name: 'home',
-        url: '',
-        templateUrl: '/components/homePage/template/homePage.html'
-      })
-      .state({
-        name: 'converter',
-        url: '/converter',
-        component: 'myConverter'
-      })
-      .state({
-        name: 'contacts',
-        url: '/contacts',
-        templateUrl: '/components/contactsPage/template/contactsPage.html'
-      })
-      .state({
-        name: 'login',
-        url: '/login',
-        templateUrl: '/components/loginForm/template/loginForm.html'
-      })
-      .state('login.logout', {
-        url: 'login/logout',
-        templateUrl: '/components/loginForm/template/registration.html'
-      })
-      .state('login.loginenter', {
-        url: 'login/loginenter',
-        templateUrl: '/components/loginForm/template/login.html'
-      });
+  myApp.config(['currencyServiceProvider', '$stateProvider', '$urlRouterProvider',
+    function(currencyServiceProvider, $stateProvider, $urlRouterProvider) {
+      $stateProvider
+        .state({
+          name: 'main',
+          url: '/main',
+          templateUrl: '/components/main/main.html'
+        })
+        .state('main.home', {
+          url: 'main/home',
+          templateUrl: '/components/homePage/template/homePage.html'
+        })
+        .state('main.converter', {
+          url: 'main/converter',
+          component: 'myConverter'
+        })
+        .state('main.contacts', {
+          url: 'main/contacts',
+          templateUrl: '/components/contactsPage/template/contactsPage.html'
+        })
+        .state({
+          name: 'login',
+          url: '/login',
+          controller: 'myFormlogin',
+          controllerAs: 'fc',
+          templateUrl: '/components/loginForm/template/loginForm.html'
+        })
+        .state('login.logout', {
+          url: 'login/logout',
+          controller: 'myFormlogin',
+          controllerAs: 'fc',
+          templateUrl: '/components/loginForm/template/registration.html'
+        })
+        .state('login.loginenter', {
+          url: '/loginenter',
+          controller: 'myFormlogin',
+          controllerAs: 'fc',
+          templateUrl: '/components/loginForm/template/login.html'
+        });
 
-    currencyServiceProvider.setAPI('https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5');
-  }])
+      $urlRouterProvider.otherwise('/login/loginenter');
+
+      currencyServiceProvider.setAPI('https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5');
+    }])
     .run(function($window, $rootScope) {
       $rootScope.netActive = navigator.onLine;
       $window.addEventListener('offline', function() {
