@@ -1,15 +1,12 @@
 <form class="registration-form">
-        <label>
-            <input type="text" name="firstName" placeholder="Enter you first name">
-          </label>
           <label>
-            <input type="text" name="firstName" placeholder="Enter you last name">
-          </label>
-          <label>
-              <input type="text" name="login" placeholder="Enter you login">
+              <input type="email" name="mail" placeholder="Enter your mail" ng-model='fc.mailReg'>
             </label>
           <label>
-            <input type="email" name="mail" placeholder="Enter your mail">
+            <input type="password" name="password" placeholder="Enter your password" ng-model='fc.passReg'>
           </label>
-          <button type="submit">registration</button>
-    </form>
+          <label>
+              <input type="password" name="password-check" placeholder="Please repeat your password" ng-model='fc.passRegCheck'>
+          </label>
+          <button type="submit" ng-click='fc.registration()'>registration</button>
+</form>

@@ -5,6 +5,7 @@ body{
     font-family: 'Roboto', sans-serif;
     color: #fff;
 }
+
 .app-wrapper{
     width: 600px;
     padding: 150px 0;
@@ -154,11 +155,14 @@ background: rgba(255, 255, 255, .8);
     }
 }
 
-.login-wrapper{
-    margin: 0 auto;
-    width: 350px;
-    background: #fff;
+.login-wrapper{    
+    padding-top: 150px;
+}
+.login-container{
+    background: rgba(255, 255, 255, .8);
     border-radius: 5px;
+    width: 350px;
+    margin: 0 auto;
 }
 .login-title{
     display: flex;
@@ -177,10 +181,18 @@ background: rgba(255, 255, 255, .8);
                 color: #fff;
             }
         }
+        &.active{
+            background: #063b8c;
+            a{
+                color: #fff;
+            } 
+        }
         a{
             width: 100%;
             line-height: 50px;
             font-size: 18px;
+            font-weight: 800;
+            color: #005de9;
             transition: .3s linear;
         }
     }
@@ -197,9 +209,9 @@ background: rgba(255, 255, 255, .8);
     input{
         width: 100%;
         padding: 5px 0;
-        border: 1px solid transparent;
-        border-bottom: 1px solid #005de9;
-        border-radius: 0;
+        border: 1px solid #5d5e5f;
+        border-radius: 5px;
+        background: transparent;
         &:focus {
             outline: none;
         }
@@ -227,6 +239,44 @@ background: rgba(255, 255, 255, .8);
             }
         }
    
+}
+
+::-webkit-input-placeholder{
+    color: rgb(112, 112, 112);
+    font-size: 14px;
+    transition: all .3s ease;
+}
+::-moz-placeholder{
+    color: rgb(112, 112, 112);
+    font-size: 14px;
+    transition: all .3s ease;
+}/* Firefox 19+ */
+:-moz-placeholder{
+    color: rgb(112, 112, 112);
+    font-size: 14px;
+    transition: all .3s ease;
+}/* Firefox 18- */
+:-ms-input-placeholder{
+    color: rgb(112, 112, 112);
+    font-size: 14px;
+    transition: all 1.3s ease;
+}
+
+:focus::-webkit-input-placeholder{
+    color: transparent;
+    font-size: 0;
+}
+:focus::-moz-placeholder{
+    color: transparent;
+    font-size: 0;
+}/* Firefox 19+ */
+:focus:-moz-placeholder{
+    color: transparent;
+    font-size: 0;
+}/* Firefox 18- */
+:focus:-ms-input-placeholder{
+    color: transparent;
+    font-size: 0;
 }
 
     .page{

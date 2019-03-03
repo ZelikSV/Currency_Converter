@@ -33,11 +33,6 @@
             const res = sum * pr / 100;
 
             return res;
-          },
-          getDataBaseValues() {
-            const dbLink = firebase.database().ref()
-              .child('text');
-            dbLink.on('value', snap => console.log(snap));
           }
         };
       }]
