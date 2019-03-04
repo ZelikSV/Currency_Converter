@@ -1,0 +1,59 @@
+<div class="login login-wrapper">
+  <div class="login-container">
+    <ul class="login-title">
+      <li ng-class="{'active': fc.activeTab}" ng-click="!fc.activeTab">
+        <a ui-sref="login.logout">Sign Up</a>
+      </li>
+      <li ng-class="{'active': fc.activeTab}" ng-click="!fc.activeTab">
+        <a ui-sref="login.loginenter">Log in</a>
+      </li>
+    </ul>
+    <div class="login-content">
+      <form class="login-form" ng-show="fc.activeTab">
+        <label>
+          <input
+            type="text"
+            name="email"
+            placeholder="Enter you email"
+          />
+        </label>
+        <label>
+          <input
+            type="password"
+            name="password"
+            placeholder="Enter your password"
+           
+          />
+        </label>
+        <button type="submit">Send</button>
+      </form>
+      <form class="registration-form" ng-hide="fc.activeTab">
+        <label>
+          <input
+            type="email"
+            name="mail"
+            placeholder="Enter your mail"
+            
+          />
+        </label>
+        <label>
+          <input
+            type="password"
+            name="password"
+            placeholder="Enter your password"
+           
+          />
+        </label>
+        <label>
+          <input
+            type="password"
+            name="password-check"
+            placeholder="Please repeat your password"
+          
+          />
+        </label>
+        <button type="submit">registration</button>
+      </form>
+    </div>
+  </div>
+</div>

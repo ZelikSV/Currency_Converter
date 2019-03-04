@@ -1,0 +1,51 @@
+<div class="app-content">
+    <div class="tabs-content">
+      <div class="tabs-content-sell">
+        <div class="currency-line">
+          <label>
+            <p>give back</p>
+            <select
+              name="currency-sell"
+              ng-model="mc.currencyFrom"
+              ng-options='item.ccy for item in mc.currency | currencyFilter: mc.currencyTo.ccy'
+            >
+            </select>
+          </label>
+          <button ng-click="mc.changeValues()">&#8660;</button>
+          <label>
+            <p>we get</p>
+            <select
+              name="currency-buy"
+              ng-model="mc.currencyTo"
+              ng-options='item.ccy for item in mc.currency | currencyFilter: mc.currencyFrom.ccy'
+            >
+            </select>
+          </label>
+        </div>
+        <div class="counter-line">
+          <label>
+            <p>How much to exchange</p>
+            <input
+              type="number"
+              min="0"
+              ng-model="mc.countVal"
+            />
+          </label>
+          <label>
+            <p>How much will we get</p>
+            <input type="text" readonly ng-model="mc.costVal" ng-value="mc.costVal | number:2"/>
+          </label>
+        </div>
+        <div class="bottom-btns-wrap">
+            <label>
+                Fee 
+                 <select name="commission" ng-model="mc.taxValue" ng-options='item as item for item in mc.percentageTax'>
+              </select>
+              %
+              </label>
+          <select name="city" ng-model="mc.city" ng-options='item as item for item in mc.citiesLocation'>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
