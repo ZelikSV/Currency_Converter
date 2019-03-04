@@ -21,15 +21,15 @@
           templateUrl: '/components/main/main.html'
         })
         .state('main.home', {
-          url: 'main/home',
+          url: '/home',
           templateUrl: '/components/homePage/template/homePage.html'
         })
         .state('main.converter', {
-          url: 'main/converter',
+          url: '/converter',
           component: 'myConverter'
         })
         .state('main.contacts', {
-          url: 'main/contacts',
+          url: '/contacts',
           templateUrl: '/components/contactsPage/template/contactsPage.html'
         })
         .state({
@@ -40,19 +40,19 @@
           templateUrl: '/components/loginForm/template/loginForm.html'
         })
         .state('login.logout', {
-          url: 'login/logout',
+          url: '/signup',
           controller: 'myFormlogin',
           controllerAs: 'fc',
           templateUrl: '/components/loginForm/template/registration.html'
         })
         .state('login.loginenter', {
-          url: '/loginenter',
+          url: '/signin',
           controller: 'myFormlogin',
           controllerAs: 'fc',
           templateUrl: '/components/loginForm/template/login.html'
         });
 
-      $urlRouterProvider.otherwise('/login/loginenter');
+      $urlRouterProvider.otherwise('/login/signin');
 
       currencyServiceProvider.setAPI('https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5');
     }])
